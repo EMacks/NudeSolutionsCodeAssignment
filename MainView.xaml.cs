@@ -26,23 +26,17 @@ namespace NSApp
             InitializeComponent();
             cboCategories.ItemsSource = new string[] { "Electronics", "Clothing", "Kitchen" };
             ViewModel = new MainViewModel();
-            Refresh();
-        }
-        public  void Refresh()
-        {
-             ViewModel.Refresh();
+            ViewModel.Refresh();
         }
 
         private void CreateNewProduct(object sender, RoutedEventArgs e)
         {
-            ViewModel.NewProduct.Save();
-            Refresh();
-            ViewModel.NewProduct.Clear();
+            ViewModel.SaveNewProduct();
         }
 
         private void ClearNewProduct(object sender, RoutedEventArgs e)
         {
-            ViewModel.NewProduct.Clear();
+            ViewModel.ClearNewProduct();
         }
 
         private void DeleteProduct(object sender, RoutedEventArgs e)
@@ -50,7 +44,7 @@ namespace NSApp
             Button b = (Button)sender;
             Product p = (Product)b.DataContext;
             p.Delete();
-            Refresh();
+            ViewModel.Refresh();
         }
     }
 }

@@ -49,9 +49,16 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <TextBlock Text="Product Name" />
-                <TextBox Grid.Column="1" Text="{Binding NewProduct.Name}" />
-                <TextBlock Grid.Column="2" Text="Value" />
-                <TextBox Grid.Column="3" Text="{Binding NewProduct.Value, UpdateSourceTrigger=PropertyChanged, StringFormat=C0, ConverterCulture={x:Static sysglb:CultureInfo.CurrentCulture}}" />
+                <TextBox
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Margin="4,0,48,0"
+                    Text="{Binding NewProductName, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Grid.Column="2" Text="Value  $" />
+                <TextBox
+                    Grid.Column="3"
+                    Text="{Binding NewProductValue, UpdateSourceTrigger=PropertyChanged, StringFormat=N0}"
+                    TextAlignment="Right" />
                 <TextBlock
                     Grid.Row="0"
                     Grid.Column="4"
@@ -60,7 +67,7 @@
                     x:Name="cboCategories"
                     Grid.Row="0"
                     Grid.Column="5"
-                    SelectedValue="{Binding NewProduct.Category}" />
+                    SelectedValue="{Binding NewProductCategory, UpdateSourceTrigger=PropertyChanged}" />
                 <Button
                     Grid.Row="1"
                     Grid.Column="5"

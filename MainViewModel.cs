@@ -10,7 +10,29 @@ namespace NSApp
 {
     public class MainViewModel
     {
-        public Product NewProduct { get; set; } = new Product();
+        public string NewProductName { get; set; } = "";
+        public string NewProductCategory { get; set; } = "";
+        public int NewProductValue { get; set; } = 0;
+        public void SaveNewProduct()
+        {
+            var p = new Product
+            {
+                Category = NewProductCategory,
+                Name = NewProductName,
+                Value = NewProductValue
+            };
+            p.Save();
+            Refresh();
+            ClearNewProduct();
+        }
+
+        public void ClearNewProduct()
+        {
+            NewProductCategory = "";
+            NewProductName = "";
+            NewProductValue = 0;
+        }
+
         public int GrandTotal
         {
             get
