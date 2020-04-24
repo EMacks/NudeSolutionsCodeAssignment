@@ -11,12 +11,18 @@ namespace NSApp
     public class MainViewModel
     {
         public Product NewProduct { get; set; } = new Product();
-
+        public int GrandTotal
+        {
+            get
+            {
+                return CategoryGroups.Sum(x => x.CategoryValue);
+            }
+        }
         public ObservableCollection<CategoryGroup> CategoryGroups { get; set; } = new ObservableCollection<CategoryGroup>();
-        public async Task Refresh()
+        public void Refresh()
         {
             CategoryGroups.Clear();
-            List<Product> l = await Product.Fetch();
+            List<Product> l = Product.Fetch();
             var g= GroupItemsByCategory(l);
             foreach (var cat in g)
                 CategoryGroups.Add(cat);
@@ -35,7 +41,7 @@ namespace NSApp
 
         public class CategoryGroup
         {
-            public Product.Categories CategoryName { get; set; }
+            public string CategoryName { get; set; }
             public int CategoryValue { get; set; }
             public List<Product> Products { get; set; }
         }
