@@ -37,6 +37,7 @@ namespace NSApp
 
         internal void Save()
         {
+            //validate
             string query;
             if (this.Exists())
             {

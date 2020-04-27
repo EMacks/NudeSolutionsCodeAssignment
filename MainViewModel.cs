@@ -15,6 +15,8 @@ namespace NSApp
         public int NewProductValue { get; set; } = 0;
         public void SaveNewProduct()
         {
+            //validate input
+            //clean input strings
             var p = new Product
             {
                 Category = NewProductCategory,
